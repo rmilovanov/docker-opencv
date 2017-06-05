@@ -8,8 +8,6 @@ RUN apt-get -y upgrade
 RUN apt-get -y dist-upgrade
 RUN apt-get -y autoremove
 
-
-# Update packages and install basics 
 RUN apt-get install -y \
 	wget \
 	unzip \
@@ -27,7 +25,7 @@ RUN python get-pip.py && rm get-pip.py
 RUN pip install --upgrade pip
 
 
-# 3. INSTALL THE LIBRARY (YOU CAN CHANGE '3.2.0' FOR THE LAST STABLE VERSION)
+# Build OpenCV
 
 WORKDIR /tmp
 RUN wget https://github.com/opencv/opencv/archive/3.2.0.zip
@@ -41,6 +39,8 @@ RUN cmake -DWITH_QT=ON -DWITH_OPENGL=ON -DFORCE_VTK=ON -DWITH_TBB=ON -DWITH_GDAL
 RUN make -j4
 RUN make install
 RUN ldconfig
+
+# Install Pillow (Which contains PIL)
 
 RUN apt-get -y install libjpeg8 libjpeg62-dev libfreetype6 libfreetype6-dev
 RUN pip install Pillow
