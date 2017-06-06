@@ -44,3 +44,6 @@ RUN ldconfig
 
 RUN apt-get -y install libjpeg8 libjpeg62-dev libfreetype6 libfreetype6-dev
 RUN pip install Pillow
+
+WORKDIR /
+

@@ -10,4 +10,8 @@ docker build -t Name-your-container .
 
 #### *That's it!* ####
 
+## Or, you can pull image from Docker Hub: ##
 
+```
+docker pull rmilovanov/opencv 
+```
